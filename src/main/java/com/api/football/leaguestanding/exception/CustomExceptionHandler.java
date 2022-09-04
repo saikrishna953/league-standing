@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @ControllerAdvice
 @Slf4j
@@ -51,6 +52,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                 = new ArrayList<>();
         LeagueStandingDocumentErrorsInner leagueStandingDocumentErrorsInner =
                 new LeagueStandingDocumentErrorsInner();
+        leagueStandingDocumentErrorsInner.setId(UUID.randomUUID().toString());
         leagueStandingDocumentErrorsInner.setCode(messageCode.getCode());
         leagueStandingDocumentErrorsInner.setTitle(messageCode.getStaticMessage());
         leagueStandingDocumentErrorsInner.setStatus(String.valueOf(status.value()));

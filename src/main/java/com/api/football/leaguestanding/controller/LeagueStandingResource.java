@@ -7,6 +7,7 @@ import com.api.football.leaguestanding.model.LeagueStandingRequest;
 import com.api.football.leaguestanding.service.LeagueStandingService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class LeagueStandingResource {
 
         LeagueStandingRequest requestAttributes = LeagueStandingRequest.builder().leagueId(leagueId)
                 .countryName(countryName).teamName(teamName).build();
-        Optional.ofNullable(leagueId).orElseThrow(() -> new InvalidRequestException("leagueId is empty"));
+        Optional.ofNullable(leagueId).filter(StringUtils::isNotEmpty).orElseThrow(() -> new InvalidRequestException("leagueId is empty"));
         LeagueStandingDocument document = leagueStandingService.getLeagueStanding(requestAttributes);
         LeagueStandingDocumentDataLinksInner link = new LeagueStandingDocumentDataLinksInner();
         String reqUrl = httpServletRequest.getRequestURL().toString();

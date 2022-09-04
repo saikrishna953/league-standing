@@ -50,15 +50,3 @@ apifootball:
 spring:
   jackson:
     default-property-inclusion: non_null
-
-app:
-  name: league standing application
-  api:
-    title: Get League Standing API
-    version: 1.0.0
-    description: description
-    base-package: com.api.football.leaguestanding
-    contact-name: apisupportgroup
-    contact-email: apisupportgroup@abc.com
-    swagger:
-      enable: true
