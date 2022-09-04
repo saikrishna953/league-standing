@@ -1,0 +1,181 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "League Standings",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/leagueStanding/v1",
+      "description": "getLeagueStanding"
+    }
+  ],
+  "paths": {
+    "/leagues/{leagueId}": {
+      "get": {
+        "operationId": "Get League Standing by league id",
+        "summary": "Get League Standing by league id",
+        "parameters": [
+          {
+            "name": "leagueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeagueStandingDocument"
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "data": {
+                        "id": "302",
+                        "attributes": {
+                          "country_id": "12",
+                          "country_name": "Spain",
+                          "league_id": "302",
+                          "league_name": "La Liga",
+                          "team_id": "76",
+                          "team_name": "Real Madrid",
+                          "overall_league_position": "1"
+                        },
+                        "links": {
+                          "href": "http://localhost:8080/leaguestanding/v1/leagues/302",
+                          "rel": "self"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Required input parameters missing",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "response": {
+                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5baw660c7\",\n          \"status\": \"400\",\n          \"code\": \"103\",\n          \"title\": \"league_name cannot be empty/null\"\n      }\n   ]\n }\n"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "response": {
+                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5bab660c7\",\n          \"status\": \"401\",\n          \"code\": \"100\",\n          \"title\": \"Unauthorized request\",\n          \"detail\": \"Authorization Header is missing\"\n      }\n   ]\n }\n"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "League id not found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "response": {
+                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5bab660c7\",\n          \"status\": \"404\",\n          \"code\": \"101\",\n          \"title\": \"leagueId not found\",\n          \"details: \"leagueId=1\"\n      }\n   ]\n }\n"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LeagueStandingDocument": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "country_name": {
+                      "type": "string"
+                    },
+                    "league_id": {
+                      "type": "string"
+                    },
+                    "league_name": {
+                      "type": "string"
+                    },
+                    "team_id": {
+                      "type": "string"
+                    },
+                    "team_name": {
+                      "type": "string"
+                    },
+                    "overall_league_position": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    },
+                    "rel": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
