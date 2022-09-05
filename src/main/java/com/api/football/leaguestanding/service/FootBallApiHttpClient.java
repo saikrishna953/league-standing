@@ -1,6 +1,5 @@
 package com.api.football.leaguestanding.service;
 
-import com.api.football.leaguestanding.exception.InvalidRequestException;
 import com.api.football.leaguestanding.exception.LeagueIdNotFoundException;
 import com.api.football.leaguestanding.model.LeagueStanding;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -54,7 +53,7 @@ public class FootBallApiHttpClient {
             Optional.of(error).map(JsonNode::asText).filter(String.valueOf(HttpStatus.NOT_FOUND.value())::equals)
                     .map(s -> {
                         throw new LeagueIdNotFoundException("leagueId=" + leagueId);
-                    }).orElseThrow(InvalidRequestException::new);
+                    });
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
