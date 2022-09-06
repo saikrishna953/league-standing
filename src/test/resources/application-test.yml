@@ -1,3 +1,8 @@
+server:
+  servlet:
+    context-path: /leaguestanding
+  port: 8085
+
 apifootball:
   base:
     url: https://apiv3.apifootball.com

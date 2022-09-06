@@ -15,6 +15,7 @@
     <description>league-standing</description>
     <properties>
         <java.version>11</java.version>
+        <cucumber.version>6.11.0</cucumber.version>
     </properties>
     <dependencies>
         <dependency>
@@ -75,7 +76,24 @@
             <artifactId>resilience4j-spring-boot2</artifactId>
             <version>1.6.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
