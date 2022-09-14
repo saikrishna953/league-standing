@@ -80,7 +80,7 @@
               "application/json": {
                 "examples": {
                   "response": {
-                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5baw660c7\",\n          \"status\": \"400\",\n          \"code\": \"103\",\n          \"title\": \"league_name cannot be empty/null\"\n      }\n   ]\n }\n"
+                    "value": "{\n    \"errors\": [\n        {\n            \"id\": \"1a8c4868-df9e-4f88-89fd-5a076a78f7bf\",\n            \"status\": \"400\",\n            \"code\": \"100\",\n            \"title\": \"Missing league id in the request\",\n            \"detail\": \"leagueId is empty\"\n        }\n    ]\n}"
                   }
                 }
               }
@@ -104,7 +104,7 @@
               "application/json": {
                 "examples": {
                   "response": {
-                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5bab660c7\",\n          \"status\": \"404\",\n          \"code\": \"101\",\n          \"title\": \"leagueId not found\",\n          \"details\": \"leagueId=1\"\n      }\n   ]\n }\n"
+                    "value": "{\n    \"errors\": [\n        {\n            \"id\": \"7bfee94b-d127-4222-a261-f737d9b09d6f\",\n            \"status\": \"404\",\n            \"code\": \"101\",\n            \"title\": \"League id not found\",\n            \"detail\": \"leagueId=12222\"\n        }\n    ]\n}"
                   }
                 }
               }
