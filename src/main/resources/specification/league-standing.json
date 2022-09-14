@@ -11,15 +11,31 @@
     }
   ],
   "paths": {
-    "/leagues/{leagueId}": {
+    "/leagues": {
       "get": {
         "operationId": "Get League Standing by league id",
         "summary": "Get League Standing by league id",
         "parameters": [
           {
             "name": "leagueId",
-            "in": "path",
+            "in": "query",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "countryName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamName",
+            "in": "query",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -88,7 +104,7 @@
               "application/json": {
                 "examples": {
                   "response": {
-                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5bab660c7\",\n          \"status\": \"404\",\n          \"code\": \"101\",\n          \"title\": \"leagueId not found\",\n          \"details: \"leagueId=1\"\n      }\n   ]\n }\n"
+                    "value": "{\n  \"errors\": [\n        {\n          \"id\": \"51bd1795-769d-41c7-a25b-85f5bab660c7\",\n          \"status\": \"404\",\n          \"code\": \"101\",\n          \"title\": \"leagueId not found\",\n          \"details\": \"leagueId=1\"\n      }\n   ]\n }\n"
                   }
                 }
               }
